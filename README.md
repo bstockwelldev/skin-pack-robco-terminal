@@ -56,6 +56,10 @@ Integration is intentionally **not** applied in this package. When you dogfood, 
 - Bootstrap allowlist parity with `buildSkinBootstrapScript` from `@bstockwelldev/react-skin-system` and the root layout inline script.
 - Import **`@bstockwelldev/skin-pack-robco-terminal/style.css`** from the app’s global CSS so tokens apply under `html[data-skin='robco-terminal']`.
 
+## Next: Steps 3–4
+
+Distribution and automation (**`@bstockwelldev/skin-cli`**, registry publishing, CI) live in [`react-skin-system` **docs/steps-3-4-roadmap**](https://github.com/bstockwelldev/react-skin-system/blob/master/docs/steps-3-4-roadmap.md) after that repo is pushed to GitHub.
+
 ## Development
 
 ```bash
