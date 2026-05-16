@@ -1,0 +1,52 @@
+{
+  "name": "@bstockwelldev/skin-pack-robco-terminal",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Portable RobCo terminal skin metadata and CSS tokens for html[data-skin] hosts.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bstockwelldev/skin-pack-robco-terminal.git"
+  },
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css",
+    "./dist/style.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup && node scripts/copy-style.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@bstockwelldev/react-skin-system": "file:../react-skin-system",
+    "@types/node": "^22.15.29",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "keywords": [
+    "theme",
+    "skin",
+    "robco",
+    "terminal",
+    "data-skin"
+  ]
+}
