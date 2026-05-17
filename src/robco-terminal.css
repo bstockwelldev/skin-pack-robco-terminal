@@ -5,41 +5,211 @@
 html[data-skin='robco-terminal'] {
   color-scheme: dark;
 
-  /* Host utility */
+  /* Finalized RobCo design tokens */
+  --robco-bg-base: #020d02;
+  --robco-bg-panel: #041004;
+  --robco-bg-raised: #071507;
+  --robco-green-dim: #1a5c2a;
+  --robco-green-mid: #00c832;
+  --robco-green-hot: #39ff14;
+  --robco-green-glow: rgba(57, 255, 20, 0.4);
+  --robco-amber: #c8a227;
+  --robco-amber-hot: #ffd700;
+  --robco-amber-glow: rgba(255, 215, 0, 0.35);
+  --robco-red-crt: #ff3b3b;
+  --robco-border: rgba(57, 255, 20, 0.28);
+  --robco-border-hot: rgba(57, 255, 20, 0.75);
+
   --skin-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     'Liberation Mono', 'Courier New', monospace;
-  --skin-terminal-glow: 0 0 12px hsl(48 100% 50% / 0.35);
-  --skin-scanline-opacity: 0.06;
+  --skin-terminal-glow:
+    0 0 2px #39ff14,
+    0 0 6px rgba(57, 255, 20, 0.9),
+    0 0 14px rgba(57, 255, 20, 0.6),
+    0 0 30px rgba(57, 255, 20, 0.25),
+    0 0 55px rgba(57, 255, 20, 0.1);
+  --skin-amber-glow:
+    0 0 2px var(--robco-amber-hot),
+    0 0 8px rgba(255, 215, 0, 0.7),
+    0 0 20px rgba(255, 215, 0, 0.3);
+  --skin-panel-glow:
+    0 0 16px rgba(57, 255, 20, 0.05),
+    inset 0 0 24px rgba(57, 255, 20, 0.025);
+  --skin-scanline-opacity: 0.075;
+  --skin-vignette-opacity: 0.84;
+  --skin-sweep-duration: 8s;
 
-  /* Amber terminal core (HSL channels for shadcn-style hsl(var(--token))) */
-  --background: 28 18% 7%;
-  --foreground: 48 100% 88%;
-  --card: 28 20% 10%;
-  --card-foreground: 48 90% 90%;
-  --popover: 28 22% 8%;
-  --popover-foreground: 48 100% 90%;
-  --primary: 48 100% 48%;
-  --primary-foreground: 28 25% 6%;
-  --secondary: 198 35% 18%;
-  --secondary-foreground: 198 85% 88%;
-  --muted: 28 14% 16%;
-  --muted-foreground: 48 20% 65%;
-  --accent: 48 96% 42%;
-  --accent-foreground: 28 30% 6%;
-  --destructive: 0 72% 42%;
-  --destructive-foreground: 48 100% 95%;
-  --border: 48 35% 22%;
-  --input: 48 35% 18%;
-  --ring: 48 100% 50%;
+  /* shadcn-style HSL aliases */
+  --background: 120 73% 3%;
+  --foreground: 132 100% 85%;
+  --card: 120 60% 4%;
+  --card-foreground: 132 100% 85%;
+  --popover: 120 58% 5%;
+  --popover-foreground: 132 100% 86%;
+  --primary: 110 100% 54%;
+  --primary-foreground: 120 73% 3%;
+  --secondary: 132 57% 14%;
+  --secondary-foreground: 132 100% 78%;
+  --muted: 120 36% 9%;
+  --muted-foreground: 132 58% 58%;
+  --accent: 47 100% 50%;
+  --accent-foreground: 120 73% 3%;
+  --destructive: 0 100% 62%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 132 100% 54% / 0.28;
+  --input: 132 100% 54% / 0.24;
+  --ring: 110 100% 54%;
 
-  --sidebar-background: 28 20% 8%;
-  --sidebar-foreground: 48 90% 86%;
-  --sidebar-primary: 48 100% 46%;
-  --sidebar-primary-foreground: 28 25% 6%;
-  --sidebar-accent: 28 18% 14%;
-  --sidebar-accent-foreground: 48 85% 90%;
-  --sidebar-border: 48 28% 20%;
-  --sidebar-ring: 48 100% 50%;
+  --sidebar-background: 120 63% 4%;
+  --sidebar-foreground: 132 100% 80%;
+  --sidebar-primary: 110 100% 54%;
+  --sidebar-primary-foreground: 120 73% 3%;
+  --sidebar-accent: 120 47% 8%;
+  --sidebar-accent-foreground: 132 100% 86%;
+  --sidebar-border: 132 100% 54% / 0.28;
+  --sidebar-ring: 110 100% 54%;
 
   font-family: var(--skin-font-mono);
+  background: var(--robco-bg-base);
+  text-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
+}
+
+html[data-skin='robco-terminal'] ::selection {
+  color: var(--robco-bg-base);
+  background: var(--robco-green-hot);
+}
+
+html[data-skin='robco-terminal'] :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--robco-green-hot);
+  text-shadow: var(--skin-terminal-glow);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+html[data-skin='robco-terminal'] :is(button, input, textarea, select) {
+  font-family: var(--skin-font-mono);
+}
+
+html[data-skin='robco-terminal'] :is(input, textarea)::placeholder {
+  color: var(--robco-green-dim);
+  text-transform: uppercase;
+}
+
+html[data-skin='robco-terminal'] [data-skin-card],
+html[data-skin='robco-terminal'] .skin-card {
+  position: relative;
+  border: 1px solid var(--robco-border);
+  background: var(--robco-bg-panel);
+  box-shadow: var(--skin-panel-glow);
+}
+
+html[data-skin='robco-terminal'] [data-skin-card]::before,
+html[data-skin='robco-terminal'] .skin-card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--robco-green-hot);
+  border-left: 2px solid var(--robco-green-hot);
+}
+
+html[data-skin='robco-terminal'] [data-skin-card]::after,
+html[data-skin='robco-terminal'] .skin-card::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--robco-green-hot);
+  border-bottom: 2px solid var(--robco-green-hot);
+}
+
+html[data-skin='robco-terminal'] .skin-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--robco-green-dim);
+  color: var(--robco-green-mid);
+  padding: 2px 6px;
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+html[data-skin='robco-terminal'] .skin-tag::before {
+  content: '[ ';
+}
+
+html[data-skin='robco-terminal'] .skin-tag::after {
+  content: ' ]';
+}
+
+html[data-skin='robco-terminal'] .skin-tag[data-state='active'],
+html[data-skin='robco-terminal'] .skin-tag-active {
+  border-color: var(--robco-green-hot);
+  color: var(--robco-green-hot);
+  background: rgba(57, 255, 20, 0.12);
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.15);
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.7);
+}
+
+html[data-skin='robco-terminal'] .skin-tag[data-state='active']::before,
+html[data-skin='robco-terminal'] .skin-tag-active::before {
+  content: '< ';
+}
+
+html[data-skin='robco-terminal'] .skin-tag[data-state='active']::after,
+html[data-skin='robco-terminal'] .skin-tag-active::after {
+  content: ' >';
+}
+
+html[data-skin='robco-terminal'] .skin-crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.22) 0,
+      rgba(0, 0, 0, 0.22) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(
+      ellipse 85% 85% at 50% 50%,
+      transparent 28%,
+      rgba(0, 0, 0, 0.15) 50%,
+      rgba(0, 0, 0, 0.55) 72%,
+      rgba(0, 0, 0, var(--skin-vignette-opacity)) 88%,
+      rgba(0, 0, 0, 0.96) 100%
+    );
+}
+
+html[data-skin='robco-terminal'] .skin-terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1em;
+  background: var(--robco-green-hot);
+  box-shadow: 0 0 4px var(--robco-green-hot), 0 0 12px rgba(57, 255, 20, 0.5);
+  animation: robco-cursor-blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes robco-cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-skin='robco-terminal'] .skin-terminal-cursor {
+    animation: none;
+  }
 }
