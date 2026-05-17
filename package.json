@@ -1,7 +1,7 @@
 {
   "name": "@bstockwelldev/skin-pack-robco-terminal",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
   "description": "Portable RobCo terminal skin metadata and CSS tokens for html[data-skin] hosts.",
   "repository": {
@@ -29,6 +29,9 @@
     "README.md",
     "LICENSE"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup && node scripts/copy-style.mjs",
     "typecheck": "tsc --noEmit",
@@ -40,7 +43,8 @@
     "@types/node": "^22.15.29",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.5",
+    "changesets": "^2.25.0"
   },
   "keywords": [
     "theme",
